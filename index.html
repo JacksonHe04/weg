@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>世界模型 World Models · 世界末日女朋友 WEG</title>
+  <meta name="description" content="世界末日女朋友 · 世界模型出品的概念导览：世界模型如何压缩观测、预测未来并驱动规划与行动，以及四条技术路线、代表模型、核心挑战与可溯源出处。">
+  <meta name="theme-color" content="#F4EFE6">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="世界模型 World Models · 世界末日女朋友 WEG">
+  <meta property="og:description" content="从潜空间动力学到视频生成，从 JEPA 到 3D 空间智能：一份关于世界模型的概念导览，每条事实标注出处与可信度。">
+  <meta property="og:locale" content="zh_CN">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%23F4EFE6'/%3E%3Crect x='3.5' y='3.5' width='17' height='17' fill='none' stroke='%231A1815' stroke-width='1'/%3E%3Ccircle cx='12' cy='12' r='3.6' fill='none' stroke='%23A63B2A' stroke-width='1.3'/%3E%3Cpath d='M12 2.5v5M12 16.5v5M2.5 12h5M16.5 12h5' stroke='%231A1815' stroke-width='1'/%3E%3C/svg%3E">
+  <script>
+    document.documentElement.classList.add('js-reveal');
+    window.setTimeout(function () {
+      if (!document.documentElement.hasAttribute('data-reveal-ready')) {
+        document.documentElement.classList.remove('js-reveal');
+      }
+    }, 2500);
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+  <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" aria-label="世界末日女朋友 · 世界模型 · 回到顶部">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <rect x="3.5" y="3.5" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1"/>
+            <circle cx="12" cy="12" r="3.6" fill="none" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M12 2.5v5M12 16.5v5M2.5 12h5M16.5 12h5" stroke="currentColor" stroke-width="1"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-name">世界末日女朋友</span>
+          <span class="brand-sub">世界模型 · WORLD MODELS</span>
+        </span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="章节导航">
+        <a href="#definition"><span>01</span>定义</a>
+        <a href="#loop"><span>02</span>循环</a>
+        <a href="#routes"><span>03</span>路线</a>
+        <a href="#sandbox"><span>04</span>沙盒</a>
+        <a href="#models"><span>05</span>模型</a>
+        <a href="#timeline"><span>06</span>时间线</a>
+        <a href="#challenges"><span>07</span>挑战</a>
+      </nav>
+
+      <details class="mobile-menu">
+        <summary aria-label="打开章节目录">目录</summary>
+        <nav aria-label="移动端章节导航">
+          <a href="#definition"><span>01</span>定义</a>
+          <a href="#loop"><span>02</span>核心循环</a>
+          <a href="#routes"><span>03</span>技术路线</a>
+          <a href="#sandbox"><span>04</span>推演沙盒</a>
+          <a href="#models"><span>05</span>代表模型</a>
+          <a href="#timeline"><span>06</span>时间线</a>
+          <a href="#challenges"><span>07</span>挑战与边界</a>
+          <a href="#references"><span>REF</span>延伸阅读</a>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="idx">00</span>WORLD MODELS · 概念导览</p>
+          <h1 id="hero-title">世界模型<span class="title-dot" aria-hidden="true">.</span></h1>
+          <p class="hero-tagline">让智能在行动之前，<br>先在<em>内部预演</em>世界。</p>
+          <p class="hero-lede">它学习世界如何变化：把所见压缩成内部状态，预测下一秒、下一帧、下一步。预测得足够好，智能体就能在想象中试错，而不必在现实里冒险。</p>
+          <dl class="hero-meta">
+            <div><dt>阅读</dt><dd>约 12 分钟</dd></div>
+            <div><dt>章节</dt><dd>7 节</dd></div>
+            <div><dt>更新</dt><dd>2026.10</dd></div>
+            <div><dt>引用</dt><dd>12 条</dd></div>
+          </dl>
+          <a class="hero-scroll" href="#definition">向下阅读 <span aria-hidden="true">↓</span></a>
+        </div>
+
+        <figure class="hero-figure">
+          <div class="viewport">
+            <canvas id="latent-field" aria-hidden="true"></canvas>
+            <div class="viewport-top">
+              <span>FIG. 01 · 潜空间场</span>
+              <span class="live"><i aria-hidden="true"></i>ROLLOUT</span>
+            </div>
+            <div class="viewport-bottom">
+              <span>z<sub>t</sub> → ẑ<sub>t+1</sub></span>
+              <span>σ 0.04 / 32 STEPS</span>
+            </div>
+          </div>
+          <figcaption>一个示意性的潜空间场：状态沿动力学轨迹流动，预测在内部持续推演。</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="definition" aria-labelledby="definition-title">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow"><span class="idx">01</span>DEFINITION · 定义</p>
+          <h2 id="definition-title">一个会「想象」的内部模型</h2>
+        </div>
+
+        <div class="definition-grid">
+          <blockquote class="pull" data-reveal>
+            世界模型的核心，<br>不是看清世界，<br>而是预判世界下一步<br>会变成什么样。
+          </blockquote>
+          <div class="definition-body" data-reveal>
+            <p>世界模型（World Model）是智能体对环境的一种<strong>内部表征</strong>。它通常包含三个部分：把高维观测压缩成状态的编码器、描述状态如何演化的动态模型，以及把状态映射回行动或感知的解码器。三者合起来，让智能体可以在内部「播放」未来。</p>
+            <p>这个概念在 2018 年由 Ha 与 Schmidhuber 的论文《World Models》系统性提出：智能体先在梦境中学习，再把学到的策略带回现实。今天，它已经延伸到视频生成、机器人控制、自动驾驶仿真与 3D 场景生成。</p>
+            <p>与语言模型预测「下一个 token」类似，世界模型预测「下一个状态」。区别在于，它要预测的是图像、视频、动作或三维场景——是必须与现实对齐的东西。</p>
+            <p class="definition-scope">本页采用 WEG 的宽收口径：只要模型学习环境如何演化、并在内部预测状态，就纳入讨论；「是否 action-conditioned」的争议不用于把人排除在外，而是放入技术路线与挑战中并列呈现。</p>
+          </div>
+        </div>
+
+        <aside class="formula-card" data-reveal aria-label="世界模型的组成">
+          <p class="formula">世界模型 <span class="formula-op">≈</span> 表征 <span class="formula-op">+</span> 动力学 <span class="formula-op">+</span> 预测</p>
+          <div class="formula-cells">
+            <div>
+              <span class="mono">x<sub>t</sub> → z<sub>t</sub></span>
+              <p>编码器把高维观测压缩为紧凑的内部状态。</p>
+            </div>
+            <div>
+              <span class="mono">z<sub>t+1</sub> = f(z<sub>t</sub>, a<sub>t</sub>)</span>
+              <p>动态模型描述状态如何随动作演化。</p>
+            </div>
+            <div>
+              <span class="mono">rollout × N</span>
+              <p>在内部推演多步，评估不同行动的后果。</p>
+            </div>
+            <div>
+              <span class="mono">π(a<sub>t</sub> | z<sub>t</sub>)</span>
+              <p>策略基于预测选择行动，再用新观测修正。</p>
+            </div>
+          </div>
+          <p class="formula-note">不同技术路线的分歧不在目标，而在「预测什么」：像素、抽象特征，还是显式的三维结构。</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="loop" aria-labelledby="loop-title">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow"><span class="idx">02</span>THE LOOP · 核心循环</p>
+          <h2 id="loop-title">感知 → 预测 → 行动</h2>
+          <p class="lede">世界模型把试错从现实搬进内部：在真正行动之前，先推演若干种可能的未来。</p>
+        </div>
+
+        <div class="loop" data-reveal>
+          <ol class="loop-track">
+            <li class="loop-step">
+              <span class="loop-idx">01</span>
+              <h3>观测</h3>
+              <p>视频、传感器读数与动作指令进入模型。</p>
+            </li>
+            <li class="loop-step">
+              <span class="loop-idx">02</span>
+              <h3>编码</h3>
+              <p>高维输入被压缩成紧凑的潜状态，滤除无关细节。</p>
+            </li>
+            <li class="loop-step">
+              <span class="loop-idx">03</span>
+              <h3>预测</h3>
+              <p>动态模型推演未来若干步，形成一次 rollout。</p>
+            </li>
+            <li class="loop-step">
+              <span class="loop-idx">04</span>
+              <h3>规划</h3>
+              <p>在想象中比较不同行动的后果，选出更优策略。</p>
+            </li>
+            <li class="loop-step">
+              <span class="loop-idx">05</span>
+              <h3>行动</h3>
+              <p>行动改变环境，也带来新的观测，闭环重新开始。</p>
+            </li>
+          </ol>
+          <p class="loop-return"><span aria-hidden="true">↺</span>在内部多推演一步，就在现实中少一次试错。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="routes" aria-labelledby="routes-title">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow"><span class="idx">03</span>FOUR ROUTES · 技术路线</p>
+          <h2 id="routes-title">同一个目标，四种预测对象</h2>
+          <p class="lede">所有路线都在回答「接下来会发生什么」，分歧在于它们选择在哪里预测——潜状态、像素、抽象表征，还是三维空间。</p>
+        </div>
+
+        <div class="routes" data-reveal>
+          <div class="route-tabs" role="tablist" aria-label="世界模型技术路线">
+            <button class="route-tab" id="tab-latent" role="tab" aria-selected="true" aria-controls="panel-latent">
+              <span class="tab-letter">A</span>
+              <span class="tab-text"><strong>潜空间动力学</strong><small>Latent dynamics</small></span>
+            </button>
+            <button class="route-tab" id="tab-video" role="tab" aria-selected="false" aria-controls="panel-video" tabindex="-1">
+              <span class="tab-letter">B</span>
+              <span class="tab-text"><strong>视频生成</strong><small>Video generation</small></span>
+            </button>
+            <button class="route-tab" id="tab-jepa" role="tab" aria-selected="false" aria-controls="panel-jepa" tabindex="-1">
+              <span class="tab-letter">C</span>
+              <span class="tab-text"><strong>表征空间预测</strong><small>JEPA</small></span>
+            </button>
+            <button class="route-tab" id="tab-space" role="tab" aria-selected="false" aria-controls="panel-space" tabindex="-1">
+              <span class="tab-letter">D</span>
+              <span class="tab-text"><strong>3D 空间智能</strong><small>Spatial intelligence</small></span>
+            </button>
+          </div>
+
+          <div class="route-panels">
+            <article class="route-panel" id="panel-latent" role="tabpanel" aria-labelledby="tab-latent" tabindex="0">
+              <div class="route-head">
+                <div>
+                  <p class="route-kicker">ROUTE A · LATENT DYNAMICS</p>
+                  <h3>潜空间动力学</h3>
+                  <p class="route-q">能不能在一个低维的抽象空间里，学会世界运转的规律？</p>
+                </div>
+                <p class="route-memory">在潜空间里做梦，在现实里行动。</p>
+              </div>
+              <div class="route-body">
+                <div class="route-block">
+                  <h4>工作方式</h4>
+                  <ol class="route-steps">
+                    <li><span>01</span>编码器把画面压成潜状态 z。</li>
+                    <li><span>02</span>循环网络或 Transformer 预测 z 的下一步。</li>
+                    <li><span>03</span>策略在想象出的轨迹上训练，不依赖真实环境反复试错。</li>
+                  </ol>
+                </div>
+                <div class="route-block">
+                  <h4>代表模型</h4>
+                  <ul class="chips">
+                    <li>World Models</li>
+                    <li>DreamerV3</li>
+                    <li>MuZero</li>
+                  </ul>
+                </div>
+                <div class="route-block">
+                  <h4>优势与代价</h4>
+                  <ul class="pros-cons">
+                    <li class="pro"><span>优势</span>样本效率高，适合控制与决策，算力可控。</li>
+                    <li class="con"><span>代价</span>丢弃感知细节，高度依赖学到的表征质量。</li>
+                  </ul>
+                </div>
+              </div>
+              <p class="route-source">来源：<a href="https://arxiv.org/abs/1803.10122" target="_blank" rel="noopener noreferrer">★ World Models (2018)</a> · <a href="https://arxiv.org/abs/2301.04104" target="_blank" rel="noopener noreferrer">★ DreamerV3 (2023)</a></p>
+            </article>
+
+            <article class="route-panel" id="panel-video" role="tabpanel" aria-labelledby="tab-video" tabindex="0" hidden>
+              <div class="route-head">
+                <div>
+                  <p class="route-kicker">ROUTE B · VIDEO GENERATION</p>
+                  <h3>视频生成</h3>
+                  <p class="route-q">如果模型能生成以假乱真的下一帧，它是否就理解了世界？</p>
+                </div>
+                <p class="route-memory">用像素模拟世界，用规模换取真实感。</p>
+              </div>
+              <div class="route-body">
+                <div class="route-block">
+                  <h4>工作方式</h4>
+                  <ol class="route-steps">
+                    <li><span>01</span>把视频切成时空 token，学习长序列上的运动规律。</li>
+                    <li><span>02</span>以扩散或自回归方式生成后续帧。</li>
+                    <li><span>03</span>把动作、文本作为条件，生成可交互的环境与仿真数据。</li>
+                  </ol>
+                </div>
+                <div class="route-block">
+                  <h4>代表模型</h4>
+                  <ul class="chips">
+                    <li>Genie 3</li>
+                    <li class="chip-muted">Sora 2（已关停）</li>
+                    <li>GAIA-3</li>
+                    <li>Cosmos 3</li>
+                  </ul>
+                </div>
+                <div class="route-block">
+                  <h4>优势与代价</h4>
+                  <ul class="pros-cons">
+                    <li class="pro"><span>优势</span>表现力强、数据可扩展，能直接生成训练数据。</li>
+                    <li class="con"><span>代价</span>算力昂贵；长时一致性与物理正确性不稳定。</li>
+                  </ul>
+                </div>
+              </div>
+              <p class="route-source">来源：<a href="https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/" target="_blank" rel="noopener noreferrer">★ Genie 3 (2025)</a> · <a href="https://www.vice.com/en/via/openai-kills-sora/" target="_blank" rel="noopener noreferrer">◇ Sora 关停 (2026)</a> · <a href="https://blogs.nvidia.de/siggraph-news-2026-cosmos-3/" target="_blank" rel="noopener noreferrer">★ Cosmos 3 (2026)</a></p>
+            </article>
+
+            <article class="route-panel" id="panel-jepa" role="tabpanel" aria-labelledby="tab-jepa" tabindex="0" hidden>
+              <div class="route-head">
+                <div>
+                  <p class="route-kicker">ROUTE C · JOINT EMBEDDING PREDICTION</p>
+                  <h3>表征空间预测</h3>
+                  <p class="route-q">我们真的需要重建每一个像素，才能理解世界吗？</p>
+                </div>
+                <p class="route-memory">不重建世界，只预测世界的抽象变化。</p>
+              </div>
+              <div class="route-body">
+                <div class="route-block">
+                  <h4>工作方式</h4>
+                  <ol class="route-steps">
+                    <li><span>01</span>用自监督学习把视频片段编码成抽象表征。</li>
+                    <li><span>02</span>预测被遮挡部分或未来时刻的「表征」，而非像素。</li>
+                    <li><span>03</span>把学到的世界知识用于零样本规划与机器人控制。</li>
+                  </ol>
+                </div>
+                <div class="route-block">
+                  <h4>代表模型</h4>
+                  <ul class="chips">
+                    <li>I-JEPA</li>
+                    <li>V-JEPA</li>
+                    <li>V-JEPA 2</li>
+                  </ul>
+                </div>
+                <div class="route-block">
+                  <h4>优势与代价</h4>
+                  <ul class="pros-cons">
+                    <li class="pro"><span>优势</span>忽略不可预测的细节，训练效率更高，更接近「理解」。</li>
+                    <li class="con"><span>代价</span>难以直接可视化，依赖表征设计的归纳偏置。</li>
+                  </ul>
+                </div>
+              </div>
+              <p class="route-source">来源：<a href="https://arxiv.org/abs/2506.09985" target="_blank" rel="noopener noreferrer">★ V-JEPA 2 (2025)</a> · <a href="https://openreview.net/pdf?id=BZ5a1r-kVsf" target="_blank" rel="noopener noreferrer">★ LeCun, JEPA 构想 (2022)</a></p>
+            </article>
+
+            <article class="route-panel" id="panel-space" role="tabpanel" aria-labelledby="tab-space" tabindex="0" hidden>
+              <div class="route-head">
+                <div>
+                  <p class="route-kicker">ROUTE D · SPATIAL INTELLIGENCE</p>
+                  <h3>3D 空间智能</h3>
+                  <p class="route-q">如何生成一个可以走进去、并且一直存在的世界？</p>
+                </div>
+                <p class="route-memory">不只生成画面，而是生成空间本身。</p>
+              </div>
+              <div class="route-body">
+                <div class="route-block">
+                  <h4>工作方式</h4>
+                  <ol class="route-steps">
+                    <li><span>01</span>显式构建三维几何与场景结构。</li>
+                    <li><span>02</span>从文本、图像或视频生成持久、可漫游的 3D 世界。</li>
+                    <li><span>03</span>支持相机自由移动、场景编辑与标准资产导出。</li>
+                  </ol>
+                </div>
+                <div class="route-block">
+                  <h4>代表模型</h4>
+                  <ul class="chips">
+                    <li>Marble</li>
+                    <li>HunyuanWorld 2.0</li>
+                    <li>OccWorld</li>
+                  </ul>
+                </div>
+                <div class="route-block">
+                  <h4>优势与代价</h4>
+                  <ul class="pros-cons">
+                    <li class="pro"><span>优势</span>空间一致性强，可直接用于游戏、影视与仿真。</li>
+                    <li class="con"><span>代价</span>3D 数据稀缺，生成与训练成本高，细节受限。</li>
+                  </ul>
+                </div>
+              </div>
+              <p class="route-source">来源：<a href="https://techcrunch.com/2025/11/12/fei-fei-lis-world-labs-speeds-up-the-world-model-race-with-marble-its-first-commercial-product/" target="_blank" rel="noopener noreferrer">◇ Marble 商用发布 (2025-11)</a></p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint" id="sandbox" aria-labelledby="sandbox-title">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow"><span class="idx">04</span>PLAYGROUND · 推演沙盒</p>
+          <h2 id="sandbox-title">预测地平线：误差如何累积</h2>
+          <p class="lede">拖动滑杆，比较真实轨迹与带微小偏差的模型推演。地平线越长，误差越容易被放大——这正是世界模型最核心的挑战之一。</p>
+        </div>
+
+        <div class="sandbox" data-reveal>
+          <div class="sandbox-stage">
+            <div class="sandbox-hud">
+              <span class="hud-label">TRUTH / MODEL ROLLOUT</span>
+              <ul class="legend" aria-label="图例">
+                <li><i class="dot-true" aria-hidden="true"></i>真实轨迹</li>
+                <li><i class="dot-pred" aria-hidden="true"></i>模型预测</li>
+              </ul>
+            </div>
+            <div class="canvas-wrap">
+              <canvas id="horizon-canvas" aria-label="二维小球轨迹对比：墨色为真实轨迹，朱砂虚线为模型预测轨迹"></canvas>
+            </div>
+            <p class="sandbox-caption">自由抛体场景 · 概念演示 · 比例归一化到场景尺度</p>
+          </div>
+
+          <aside class="sandbox-controls">
+            <div class="readout">
+              <p class="readout-label">末端偏差</p>
+              <p class="readout-value"><span id="error-value">—</span></p>
+              <p class="readout-status" id="error-status" data-state="ok">等待推演</p>
+            </div>
+
+            <div class="control">
+              <div class="control-top">
+                <label for="horizon">预测地平线</label>
+                <output id="horizon-value" for="horizon">4.0 s</output>
+              </div>
+              <input type="range" id="horizon" min="20" max="360" step="10" value="240">
+              <div class="control-scale" aria-hidden="true"><span>0.3 s</span><span>6.0 s</span></div>
+            </div>
+
+            <button class="btn" id="reset-sim" type="button">重新抛球</button>
+
+            <p class="demo-note">预测器的重力估计约有 12% 偏差。观察端点偏差如何随地平线增长，而不只是轨迹「看起来很像」。</p>
+            <noscript><p class="demo-note">推演沙盒需要启用 JavaScript，正文内容不受影响。</p></noscript>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="models" aria-labelledby="models-title">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow"><span class="idx">05</span>LANDMARKS · 代表模型</p>
+          <h2 id="models-title">六种理解世界的方式</h2>
+          <p class="lede">它们不是同一把尺子下的六个版本，而是从不同侧面回答同一个问题：机器应该以什么形式，记住世界如何变化？</p>
+        </div>
+
+        <div class="model-grid">
+          <article class="model-card" data-reveal>
+            <div class="model-top"><span class="model-idx">01</span><span class="tag">潜空间</span><span class="model-year">2018</span></div>
+            <h3>World Models</h3>
+            <p class="model-org">David Ha · Jürgen Schmidhuber</p>
+            <p class="model-desc">用 VAE 压缩画面、用 RNN 预测未来，再让控制器在「梦境」中学习。它为整条路线命名，也确立了 V-M-C 三组件范式。</p>
+            <p class="model-note"><span>看点</span>首次证明：智能体可以在自己想象的世界里学会策略。</p>
+            <p class="model-source"><a href="https://arxiv.org/abs/1803.10122" target="_blank" rel="noopener noreferrer">★ arXiv:1803.10122</a></p>
+          </article>
+
+          <article class="model-card" data-reveal>
+            <div class="model-top"><span class="model-idx">02</span><span class="tag">潜空间</span><span class="model-year">2023</span></div>
+            <h3>DreamerV3</h3>
+            <p class="model-org">Danijar Hafner 等</p>
+            <p class="model-desc">在潜空间中想象并训练策略，用一套固定超参数跨越上百个领域，从 Atari 到 Minecraft，展示了世界模型的通用性。</p>
+            <p class="model-note"><span>看点</span>无需为每个任务调参，首次从零学会在 Minecraft 中采集钻石。</p>
+            <p class="model-source"><a href="https://arxiv.org/abs/2301.04104" target="_blank" rel="noopener noreferrer">★ arXiv:2301.04104</a></p>
+          </article>
+
+          <article class="model-card" data-reveal>
+            <div class="model-top"><span class="model-idx">03</span><span class="tag">表征</span><span class="model-year">2025</span></div>
+            <h3>V-JEPA 2</h3>
+            <p class="model-org">Meta AI</p>
+            <p class="model-desc">在抽象表征空间预测视频的未来，而不是重建像素。基于海量视频自监督训练，开源并支持零样本规划与机器人控制。</p>
+            <p class="model-note"><span>看点</span>把「预测」从像素层搬到表征层，用更少的重建换取更强的迁移。</p>
+            <p class="model-source"><a href="https://arxiv.org/abs/2506.09985" target="_blank" rel="noopener noreferrer">★ arXiv:2506.09985</a></p>
+          </article>
+
+          <article class="model-card" data-reveal>
+            <div class="model-top"><span class="model-idx">04</span><span class="tag">视频</span><span class="model-year">2024–2026</span></div>
+            <h3>Sora / Sora 2 <span class="status-tag">已关停</span></h3>
+            <p class="model-org">OpenAI</p>
+            <p class="model-desc">官方曾把它从视频生成器推向「world simulator」。2026 年 3 月宣布关停，4 月 26 日起不可用；团队转向面向机器人的 world simulation research。</p>
+            <p class="model-note"><span>看点</span>它的退场是一次方向性信号：好看的画面，支撑不起世界模型的商业闭环。</p>
+            <p class="model-source"><a href="https://www.vice.com/en/via/openai-kills-sora/" target="_blank" rel="noopener noreferrer">◇ Vice · Sora 关停</a> · <a href="https://openai.com/zh-Hant/index/sora-2/" target="_blank" rel="noopener noreferrer">★ OpenAI</a></p>
+          </article>
+
+          <article class="model-card" data-reveal>
+            <div class="model-top"><span class="model-idx">05</span><span class="tag">视频</span><span class="model-year">2025</span></div>
+            <h3>Genie 3</h3>
+            <p class="model-org">Google DeepMind</p>
+            <p class="model-desc">根据文本提示实时生成可导航的动态世界：24fps、720p，视觉记忆约 1 分钟。2026 年 1 月以 Project Genie 面向美国 Ultra 订阅用户公测。</p>
+            <p class="model-note"><span>看点</span>从「生成视频」走向「生成可玩的环境」，为智能体训练提供新土壤。</p>
+            <p class="model-source"><a href="https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/" target="_blank" rel="noopener noreferrer">★ DeepMind</a> · <a href="https://9to5google.com/2026/01/29/google-project-genie/" target="_blank" rel="noopener noreferrer">○ 9to5Google</a></p>
+          </article>
+
+          <article class="model-card" data-reveal>
+            <div class="model-top"><span class="model-idx">06</span><span class="tag">3D</span><span class="model-year">2025</span></div>
+            <h3>Marble</h3>
+            <p class="model-org">World Labs</p>
+            <p class="model-desc">从文本、单图或视频生成持久、可漫游的 3D 世界，可编辑、扩展，并导出高斯泼溅、网格与相机路径视频。2025 年 11 月商用发布。</p>
+            <p class="model-note"><span>看点</span>把世界模型变成可导出的空间资产，而不只是生成内容。</p>
+            <p class="model-source"><a href="https://techcrunch.com/2025/11/12/fei-fei-lis-world-labs-speeds-up-the-world-model-race-with-marble-its-first-commercial-product/" target="_blank" rel="noopener noreferrer">◇ TechCrunch</a></p>
+          </article>
+        </div>
+
+        <aside class="editor-note" data-reveal>
+          <p class="editor-note-label">编者注 · 2026-04</p>
+          <p>Sora 产品关停是今年最强的方向性信号之一：纯娱乐视频生成退潮，世界模型的研究与商业重心转向机器人、自动驾驶与物理 AI。衡量标准也随之从「画面是否逼真」移向「能否支撑行动」。</p>
+        </aside>
+
+        <p class="models-more" data-reveal>同样值得留意：<span>MuZero</span><span>GAIA-3</span><span>Cosmos 3</span><span>HunyuanWorld 2.0</span> —— 它们在规划、自动驾驶仿真、物理 AI 与开放 3D 生成上各自推进了一条支线。</p>
+      </div>
+    </section>
+
+    <section class="section" id="timeline" aria-labelledby="timeline-title">
+      <div class="wrap timeline-wrap">
+        <div class="timeline-intro" data-reveal>
+          <p class="eyebrow"><span class="idx">06</span>TIMELINE · 时间线</p>
+          <h2 id="timeline-title">从游戏中的梦，<br>到物理世界的预演</h2>
+          <p class="lede">不到十年，世界模型从强化学习的辅助工具，变成了生成、仿真与具身智能共同下注的基础设施。</p>
+          <p class="timeline-note">时间线选取代表性节点，同一时期的多条路线并行推进，未完整展开。基准时点：2026 年 10 月。</p>
+        </div>
+
+        <ol class="timeline">
+          <li class="tl-item" data-reveal>
+            <span class="tl-year">2018</span>
+            <div class="tl-body">
+              <h3>World Models 命名一条路线</h3>
+              <p>Ha 与 Schmidhuber 提出 V-M-C 架构，智能体在压缩的潜空间中学习，并把策略带回真实环境。</p>
+              <p class="tl-source"><a href="https://arxiv.org/abs/1803.10122" target="_blank" rel="noopener noreferrer">★ arXiv:1803.10122</a></p>
+            </div>
+          </li>
+          <li class="tl-item" data-reveal>
+            <span class="tl-year">2019</span>
+            <div class="tl-body">
+              <h3>MuZero：在潜空间中规划</h3>
+              <p>不重建环境，只学习对决策有用的状态与动力学，在棋类与 Atari 上达到超越人类的水平。</p>
+              <p class="tl-source"><a href="https://www.nature.com/articles/s41586-020-03051-4" target="_blank" rel="noopener noreferrer">★ Nature (2020)</a></p>
+            </div>
+          </li>
+          <li class="tl-item" data-reveal>
+            <span class="tl-year">2020</span>
+            <div class="tl-body">
+              <h3>Dreamer：在想象中学习控制</h3>
+              <p>把世界模型与策略学习合为一体，用想象轨迹替代大量真实交互，成为潜空间路线的重要基线。</p>
+              <p class="tl-source"><a href="https://arxiv.org/abs/1912.01603" target="_blank" rel="noopener noreferrer">★ arXiv:1912.01603</a></p>
+            </div>
+          </li>
+          <li class="tl-item" data-reveal>
+            <span class="tl-year">2022</span>
+            <div class="tl-body">
+              <h3>JEPA：预测抽象，而非像素</h3>
+              <p>LeCun 在《A Path Towards Autonomous Machine Intelligence》中提出联合嵌入预测架构，主张在表征空间预测世界。</p>
+              <p class="tl-source"><a href="https://openreview.net/pdf?id=BZ5a1r-kVsf" target="_blank" rel="noopener noreferrer">★ OpenReview</a></p>
+            </div>
+          </li>
+          <li class="tl-item" data-reveal>
+            <span class="tl-year">2023</span>
+            <div class="tl-body">
+              <h3>DreamerV3 跨越领域</h3>
+              <p>一套超参数覆盖上百个任务，证明世界模型可以具备跨领域的通用性。</p>
+              <p class="tl-source"><a href="https://arxiv.org/abs/2301.04104" target="_blank" rel="noopener noreferrer">★ arXiv:2301.04104</a></p>
+            </div>
+          </li>
+          <li class="tl-item" data-reveal>
+            <span class="tl-year">2024</span>
+            <div class="tl-body">
+              <h3>Sora 与 Genie：世界模拟器的两种想象</h3>
+              <p>前者用视频生成逼近物理世界，后者生成可交互的虚拟环境；「世界模型」开始进入公众视野。</p>
+              <p class="tl-source"><a href="https://openai.com/index/video-generation-models-as-world-simulators/" target="_blank" rel="noopener noreferrer">★ OpenAI</a> · <a href="https://arxiv.org/abs/2402.15391" target="_blank" rel="noopener noreferrer">★ arXiv:2402.15391</a></p>
+            </div>
+          </li>
+          <li class="tl-item" data-reveal>
+            <span class="tl-year">2025</span>
+            <div class="tl-body">
+              <h3>基础模型化：V-JEPA 2、Genie 3、Dreamer 4、Marble</h3>
+              <p>表征模型、实时交互世界、纯离线训练与可商用 3D 世界相继出现；Wayve GAIA-3 把世界模型用于自动驾驶安全验证。</p>
+              <p class="tl-source"><a href="https://arxiv.org/abs/2506.09985" target="_blank" rel="noopener noreferrer">★ V-JEPA 2</a> · <a href="https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/" target="_blank" rel="noopener noreferrer">★ Genie 3</a> · <a href="https://danijar.com/project/dreamer4/" target="_blank" rel="noopener noreferrer">★ Dreamer 4</a> · <a href="https://techcrunch.com/2025/11/12/fei-fei-lis-world-labs-speeds-up-the-world-model-race-with-marble-its-first-commercial-product/" target="_blank" rel="noopener noreferrer">◇ Marble</a></p>
+            </div>
+          </li>
+          <li class="tl-item tl-current" data-reveal>
+            <span class="tl-year">2026</span>
+            <div class="tl-body">
+              <h3>从能力展示走向工程落地</h3>
+              <p>Project Genie 公测、Cosmos 3 面向边缘实时控制；Sora 关停，研究与商业重心转向机器人、自动驾驶与物理 AI。</p>
+              <p class="tl-source"><a href="https://9to5google.com/2026/01/29/google-project-genie/" target="_blank" rel="noopener noreferrer">○ Project Genie</a> · <a href="https://www.vice.com/en/via/openai-kills-sora/" target="_blank" rel="noopener noreferrer">◇ Sora 关停</a> · <a href="https://blogs.nvidia.de/siggraph-news-2026-cosmos-3/" target="_blank" rel="noopener noreferrer">★ Cosmos 3</a></p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="challenges" aria-labelledby="challenges-title">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow"><span class="idx">07</span>LIMITS · 挑战与边界</p>
+          <h2 id="challenges-title">预测得像，不等于理解得深</h2>
+          <p class="lede">世界模型是对世界的压缩近似。它越有用，我们越需要清楚它在哪里会失效。</p>
+        </div>
+
+        <div class="challenge-grid">
+          <article class="challenge-card" data-reveal>
+            <span class="challenge-idx">C1</span>
+            <h3>误差累积</h3>
+            <p>自回归预测每一步的小偏差，都会成为下一步的输入。地平线越长，轨迹越容易偏离，长时一致性仍是核心难题。</p>
+          </article>
+          <article class="challenge-card" data-reveal>
+            <span class="challenge-idx">C2</span>
+            <h3>物理与因果</h3>
+            <p>画面逼真不等于理解重力、接触与遮挡。许多模型学到的是数据中的相关性，而非可干预、可反事实的因果机制。</p>
+          </article>
+          <article class="challenge-card" data-reveal>
+            <span class="challenge-idx">C3</span>
+            <h3>记忆与持续存在</h3>
+            <p>物体离开视野后是否依然存在？回到旧地点时场景是否保持？长时记忆与对象恒常性，决定了世界能否「持续」。</p>
+          </article>
+          <article class="challenge-card" data-reveal>
+            <span class="challenge-idx">C4</span>
+            <h3>评测与数据</h3>
+            <p>缺少统一基准来衡量「世界理解」。高质量的交互数据、3D 数据与反事实标注稀缺且昂贵，制约着路线之间的比较。</p>
+          </article>
+        </div>
+
+        <div class="challenge-quote" data-reveal>
+          <p>判断一个模型是否真的拥有世界模型，可以问三个问题：<br class="wide-break">它能预测没见过的干预结果吗？它的预测在长时程上自洽吗？它能支撑规划吗？</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint refs-section" id="references" aria-labelledby="references-title">
+      <div class="wrap">
+        <div class="section-head" data-reveal>
+          <p class="eyebrow"><span class="idx">REF</span>READING · 延伸阅读</p>
+          <h2 id="references-title">从原始文献继续</h2>
+          <div class="reliability" aria-label="信源可信度分级">
+            <span><b>★</b> 官方一手</span>
+            <span><b>◇</b> 权威媒体</span>
+            <span><b>○</b> 行业媒体</span>
+            <span><b>△</b> 厂商自述</span>
+            <span><b>?</b> 未能确认</span>
+          </div>
+        </div>
+
+        <ol class="ref-list">
+          <li data-reveal>
+            <span class="ref-idx">01</span>
+            <div class="ref-body">
+              <a href="https://arxiv.org/abs/1803.10122" target="_blank" rel="noopener noreferrer">World Models <span class="ext" aria-hidden="true">↗</span></a>
+              <p>Ha, D. &amp; Schmidhuber, J. (2018) · arXiv:1803.10122</p>
+            </div>
+            <span class="ref-badge">★</span>
+          </li>
+          <li data-reveal>
+            <span class="ref-idx">02</span>
+            <div class="ref-body">
+              <a href="https://arxiv.org/abs/2301.04104" target="_blank" rel="noopener noreferrer">Mastering Diverse Domains through World Models <span class="ext" aria-hidden="true">↗</span></a>
+              <p>Hafner, D. et al. (2023) · DreamerV3 · arXiv:2301.04104</p>
+            </div>
+            <span class="ref-badge">★</span>
+          </li>
+          <li data-reveal>
+            <span class="ref-idx">03</span>
+            <div class="ref-body">
+              <a href="https://openreview.net/pdf?id=BZ5a1r-kVsf" target="_blank" rel="noopener noreferrer">A Path Towards Autonomous Machine Intelligence <span class="ext" aria-hidden="true">↗</span></a>
+              <p>LeCun, Y. (2022) · JEPA 构想与自主智能架构</p>
+            </div>
+            <span class="ref-badge">★</span>
+          </li>
+          <li data-reveal>
+            <span class="ref-idx">04</span>
+            <div class="ref-body">
+              <a href="https://arxiv.org/abs/2506.09985" target="_blank" rel="noopener noreferrer">V-JEPA 2: Self-Supervised Video Models Enable Understanding, Prediction and Planning <span class="ext" aria-hidden="true">↗</span></a>
+              <p>Meta AI (2025) · arXiv:2506.09985</p>
+            </div>
+            <span class="ref-badge">★</span>
+          </li>
+          <li data-reveal>
+            <span class="ref-idx">05</span>
+            <div class="ref-body">
+              <a href="https://arxiv.org/abs/2402.15391" target="_blank" rel="noopener noreferrer">Genie: Generative Interactive Environments <span class="ext" aria-hidden="true">↗</span></a>
+              <p>Google DeepMind (2024) · arXiv:2402.15391</p>
+            </div>
+            <span class="ref-badge">★</span>
+          </li>
+          <li data-reveal>
+            <span class="ref-idx">06</span>
+            <div class="ref-body">
+              <a href="https://deepmind.google/blog/genie-3-a-new-frontier-for-world-models/" target="_blank" rel="noopener noreferrer">Genie 3: A new frontier for world models <span class="ext" aria-hidden="true">↗</span></a>
+              <p>Google DeepMind (2025-08-05)</p>
+            </div>
+            <span class="ref-badge">★</span>
+          </li>
+          <li data-reveal>
+            <span class="ref-idx">07</span>
+            <div class="ref-body">
+              <a href="https://9to5google.com/2026/01/29/google-project-genie/" target="_blank" rel="noopener noreferrer">Google opens Project Genie to AI Ultra subscribers <span class="ext" aria-hidden="true">↗</span></a>
+              <p>9to5Google (2026-01-29)</p>
+            </div>
+            <span class="ref-badge">○</span>
+          </li>
+          <li data-reveal>
+            <span class="ref-idx">08</span>
+            <div class="ref-body">
+              <a href="https://techcrunch.com/2025/11/12/fei-fei-lis-world-labs-speeds-up-the-world-model-race-with-marble-its-first-commercial-product/" target="_blank" rel="noopener noreferrer">World Labs speeds up the world model race with Marble <span class="ext" aria-hidden="true">↗</span></a>
+              <p>TechCrunch (2025-11-12) · Marble 商用发布</p>
+            </div>
+            <span class="ref-badge">◇</span>
+          </li>
+          <li data-reveal>
+            <span class="ref-idx">09</span>
+            <div class="ref-body">
+              <a href="https://www.vice.com/en/via/openai-kills-sora/" target="_blank" rel="noopener noreferrer">OpenAI kills Sora <span class="ext" aria-hidden="true">↗</span></a>
+              <p>Vice (2026) · Sora 产品关停与团队转向</p>
+            </div>
+            <span class="ref-badge">◇</span>
+          </li>
+          <li data-reveal>
+            <span class="ref-idx">10</span>
+            <div class="ref-body">
+              <a href="https://openai.com/index/video-generation-models-as-world-simulators/" target="_blank" rel="noopener noreferrer">Video generation models as world simulators <span class="ext" aria-hidden="true">↗</span></a>
+              <p>OpenAI (2024) · Sora 技术说明</p>
+            </div>
+            <span class="ref-badge">★</span>
+          </li>
+          <li data-reveal>
+            <span class="ref-idx">11</span>
+            <div class="ref-body">
+              <a href="https://blogs.nvidia.de/siggraph-news-2026-cosmos-3/" target="_blank" rel="noopener noreferrer">NVIDIA Cosmos 3 at SIGGRAPH 2026 <span class="ext" aria-hidden="true">↗</span></a>
+              <p>NVIDIA (2026) · Cosmos 3 Edge 与物理 AI</p>
+            </div>
+            <span class="ref-badge">★</span>
+          </li>
+          <li data-reveal>
+            <span class="ref-idx">12</span>
+            <div class="ref-body">
+              <a href="https://danijar.com/project/dreamer4/" target="_blank" rel="noopener noreferrer">Dreamer 4 <span class="ext" aria-hidden="true">↗</span></a>
+              <p>Danijar Hafner (2025) · 纯离线数据在 Minecraft 采集钻石</p>
+            </div>
+            <span class="ref-badge">★</span>
+          </li>
+        </ol>
+
+        <p class="ref-note">基准时点为 2026 年 10 月。厂商自述的性能数字（如仿真加速倍数、真实度百分比）未进入正文结论；标为 △ 的内容仅作线索。中文圈流传的「Genie 4」等未经官方来源确认的信息未采用。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div>
+        <p class="footer-title">世界末日女朋友 · 世界模型</p>
+        <p class="footer-en">World's End Girlfriend · World Models</p>
+        <p class="footer-note">内容整理：WEG · 2026 年 10 月。每条引用标注出处与可信度；厂商自述与未独立验证的信息已单独标记。本页为 WEG 独立整理，非相关机构的官方资料。</p>
+      </div>
+      <a class="footer-top" href="#top">回到顶部 <span aria-hidden="true">↑</span></a>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
