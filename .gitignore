@@ -32,6 +32,9 @@ node_modules/
 .pnp.*
 .env*
 !.env.example
+# Wrangler 本地状态与开发密钥
+.wrangler/
+.dev.vars
 
 # ==========================================
 # 4. 构建输出与缓存 (Build Output & Cache)
@@ -44,6 +47,7 @@ build/
 .vercel/
 *.tsbuildinfo
 next-env.d.ts
+*.qoder.site
 
 # ==========================================
 # 5. 系统与编辑器 (OS & IDE)

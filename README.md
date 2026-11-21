@@ -40,14 +40,14 @@ WEG 要做的是**把这件事讲清楚**：
 
 ## 技术栈
 
-- **Next.js 16.4**（App Router，`cacheComponents` + `partialPrefetching` 已开启）+ **React 19.3** + TypeScript
-- **React Compiler 已开启**
-- **Tailwind 4.3** + **shadcn**（`style: radix-nova`）
-- 包管理：**pnpm**
+- **Vite 8 + TypeScript 5.9**，纯静态单页，无运行时框架
+- 手写 CSS 设计系统（暖白纸面 / 墨黑衬线 / 朱砂红）与原生 Canvas 交互
+- 构建产物 `dist/`，由 **Qoder Sites** 托管
+- Node 24（见 `.nvmrc`），包管理：**pnpm 12.6**
 
 ```bash
 pnpm install
-pnpm dev      # http://localhost:3000
-pnpm build
-pnpm lint
+pnpm dev      # http://localhost:5173
+pnpm build    # 输出到 dist/
+pnpm preview
 ```
